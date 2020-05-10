@@ -25,8 +25,11 @@ const style = {
 
 function DropzoneWithoutDrag(props) {
   const dropFiles = (files) => {
+    let formData = new FormData();
+    formData.append("image", files);
+
     axios
-      .post("https://localhost:44367/api/Documents", files)
+      .post("https://localhost:44367/api/Documents", formData)
       .then((response) => {
         console.log(response);
       })
